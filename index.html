@@ -45,7 +45,7 @@ body{position:relative;background:var(--bg);
 }
 .site-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:url("bg_frame.webp") center top/cover no-repeat;
-  background-attachment:fixed;}
+  }
 .site-bg::after{content:"";position:absolute;inset:0;
   background:radial-gradient(70% 60% at 50% 42%, rgba(8,6,4,.0) 0%, rgba(8,6,4,.55) 78%, rgba(8,6,4,.8) 100%);}
 /* ornamental side columns */
@@ -105,13 +105,13 @@ a{color:inherit;text-decoration:none}
   font-weight:700;
   font-size:clamp(30px,5vw,56px);
   letter-spacing:.06em;
-  background:linear-gradient(180deg,#c9b276 0%,#9c7e44 45%,#5c4a25 100%);
+  background:linear-gradient(180deg,#f5e2a8 0%,#d9b15e 45%,#a07c34 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   text-shadow:0 2px 18px rgba(201,164,92,.25);
 }
 .brand .tagline{
   font-family:"Shippori Mincho",serif;
-  color:var(--gold-dim);font-size:clamp(11px,1.6vw,15px);
+  color:#d9c08a;font-size:clamp(11px,1.6vw,15px);
   letter-spacing:.32em;margin-top:6px;
 }
 /* nav framed (原画の金枠メニュー再現) */
@@ -158,7 +158,7 @@ a{color:inherit;text-decoration:none}
 .badge{
   position:absolute;top:8px;left:8px;z-index:2;
   font-family:"Cinzel",serif;font-size:10px;letter-spacing:.08em;
-  padding:3px 9px;border-radius:3px;backdrop-filter:blur(4px);
+  padding:3px 9px;border-radius:3px;
 }
 .badge.premium{color:#1a1206;background:linear-gradient(180deg,var(--gold-bright),var(--gold));border:1px solid var(--gold-bright)}
 .badge.free{color:var(--tx);background:rgba(20,16,10,.7);border:1px solid var(--line)}
@@ -275,11 +275,10 @@ a{color:inherit;text-decoration:none}
 /* ===== distress animation (控えめ) ===== */
 @media (prefers-reduced-motion: no-preference){
   /* 枠・ボタンの輪郭が常時微動 */
-  .nav,.filter button,.pager a,.badge.premium,.badge-prem,.rel-badge,.cta .btn{
-    filter:url(#distort)}
+  
   /* タイトルの金が揺らめくシマー */
   .brand h1{
-    background:linear-gradient(100deg,#5c4a25 0%,#9c7e44 30%,#e8d39a 48%,#9c7e44 66%,#5c4a25 100%);
+    background:linear-gradient(100deg,#a07c34 0%,#d9b15e 30%,#fbeec0 48%,#d9b15e 66%,#a07c34 100%);
     background-size:280% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;
     animation:goldShimmer 7s ease-in-out infinite}
@@ -291,7 +290,7 @@ a{color:inherit;text-decoration:none}
   .sec-title .mk,.related h3 .mk,.panel-head h2 .mk{animation:markFlick 5s steps(1) infinite}
   @keyframes markFlick{0%,92%,100%{opacity:1}94%{opacity:.5}96%{opacity:.9}}
   /* グリッチ/ノイズのちらつき(前面グレインを動かす) */
-  .grain-veil{animation:grainShift .9s steps(3) infinite}
+  .grain-veil{}
   @keyframes grainShift{
     0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-2%)}100%{transform:translate(0,0)}}
   /* 稀に走る軽いグリッチ(タイトル) */
@@ -306,23 +305,6 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="distort" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise">
-      <animate attributeName="baseFrequency" dur="14s" repeatCount="indefinite"
-        values="0.012 0.018; 0.016 0.013; 0.012 0.018" calcMode="spline"
-        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-  <filter id="distort-strong" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="3" result="n2">
-      <animate attributeName="baseFrequency" dur="9s" repeatCount="indefinite"
-        values="0.02 0.03; 0.028 0.02; 0.02 0.03"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="n2" scale="3.2"/>
-  </filter>
-</svg>
 <div class="site-bg"></div>
 <div class="grain-veil"></div>
 <div class="col l"></div><div class="col r"></div>

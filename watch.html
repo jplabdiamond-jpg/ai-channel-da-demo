@@ -23,8 +23,8 @@ a{color:inherit;text-decoration:none}
 .topbar{position:relative;padding:26px 0 14px;background:rgba(4,3,2,.50);border-bottom:1px solid rgba(201,164,92,.22);box-shadow:0 6px 24px rgba(0,0,0,.5)}
 .brand{text-align:center;padding-bottom:18px;position:relative}
 .brand h1{font-family:"Cinzel","Shippori Mincho",serif;font-weight:700;font-size:clamp(28px,5vw,52px);letter-spacing:.06em;
-  background:linear-gradient(180deg,#c9b276,#9c7e44 45%,#5c4a25);-webkit-background-clip:text;background-clip:text;color:transparent}
-.brand .tagline{font-family:"Shippori Mincho",serif;color:var(--gold-dim);font-size:clamp(11px,1.6vw,15px);letter-spacing:.32em;margin-top:6px}
+  background:linear-gradient(180deg,#f5e2a8,#d9b15e 45%,#a07c34);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .tagline{font-family:"Shippori Mincho",serif;color:#d9c08a;font-size:clamp(11px,1.6vw,15px);letter-spacing:.32em;margin-top:6px}
 /* nav framed (原画の金枠メニュー再現) */
 .nav{display:inline-flex;justify-content:center;align-items:center;gap:2px;flex-wrap:wrap;
   padding:6px 10px;margin:4px auto 0;border:1px solid rgba(201,164,92,.45);border-radius:6px;
@@ -85,7 +85,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:780px){.nav{gap:2px}.nav a{padding:8px 12px;font-size:13px}}
 .site-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:url("bg_frame.webp") center top/cover no-repeat;
-  background-attachment:fixed;}
+  }
 .site-bg::after{content:"";position:absolute;inset:0;
   background:radial-gradient(70% 60% at 50% 42%, rgba(8,6,4,.0) 0%, rgba(8,6,4,.55) 78%, rgba(8,6,4,.8) 100%);}
 .col{display:none !important;position:fixed;top:0;bottom:0;width:64px;z-index:1;pointer-events:none;
@@ -130,11 +130,10 @@ a{color:inherit;text-decoration:none}
 /* ===== distress animation (控えめ) ===== */
 @media (prefers-reduced-motion: no-preference){
   /* 枠・ボタンの輪郭が常時微動 */
-  .nav,.filter button,.pager a,.badge.premium,.badge-prem,.rel-badge,.cta .btn{
-    filter:url(#distort)}
+  
   /* タイトルの金が揺らめくシマー */
   .brand h1{
-    background:linear-gradient(100deg,#5c4a25 0%,#9c7e44 30%,#e8d39a 48%,#9c7e44 66%,#5c4a25 100%);
+    background:linear-gradient(100deg,#a07c34 0%,#d9b15e 30%,#fbeec0 48%,#d9b15e 66%,#a07c34 100%);
     background-size:280% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;
     animation:goldShimmer 7s ease-in-out infinite}
@@ -146,7 +145,7 @@ a{color:inherit;text-decoration:none}
   .sec-title .mk,.related h3 .mk,.panel-head h2 .mk{animation:markFlick 5s steps(1) infinite}
   @keyframes markFlick{0%,92%,100%{opacity:1}94%{opacity:.5}96%{opacity:.9}}
   /* グリッチ/ノイズのちらつき(前面グレインを動かす) */
-  .grain-veil{animation:grainShift .9s steps(3) infinite}
+  .grain-veil{}
   @keyframes grainShift{
     0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-2%)}100%{transform:translate(0,0)}}
   /* 稀に走る軽いグリッチ(タイトル) */
@@ -161,23 +160,6 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <filter id="distort" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise">
-      <animate attributeName="baseFrequency" dur="14s" repeatCount="indefinite"
-        values="0.012 0.018; 0.016 0.013; 0.012 0.018" calcMode="spline"
-        keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-  <filter id="distort-strong" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="3" result="n2">
-      <animate attributeName="baseFrequency" dur="9s" repeatCount="indefinite"
-        values="0.02 0.03; 0.028 0.02; 0.02 0.03"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="n2" scale="3.2"/>
-  </filter>
-</svg>
 <div class="site-bg"></div>
 <div class="grain-veil"></div>
 <div class="col l"></div><div class="col r"></div>
